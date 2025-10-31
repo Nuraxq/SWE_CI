@@ -20,7 +20,7 @@ public class Mult {
             testspassed = false;
         }
 
-        if(Mult.multiply(1,4) == 1){
+        if(Mult.multiply(1,4) == 4){
             System.out.println("Test 3 Erfolgreich!");
         }
         else{
