@@ -1,29 +1,30 @@
-imagine: openjdk::17
+name: Java CI
 
-stages:
-  -build
-  -test
+#Immer beim Pushen soll es Ausgeführt werden
+on:
+  push:
 
-variables:
-  SRC_DIR: "src"
-  BIN_DIR: "bin"
+#Wir legen die Jobs Fest
+jobs:
+  # Wir bauen und Testen direkt in einem
+  build-and-test:
+    runs-on: ubuntu-latest  #VM festlegen für Workflow 
+    steps:
+      - uses: actions/checkout@v3 # Den Code holen 
 
-before_script:
-  - mkdir -p $BIN_DIR
+      - uses: actions/setup-java@v3 # Java Version festlegen
+        with:
+          java-version: 17
 
-build:
-  stage: build
-  script:
-   - echo "Kompiliere Java Dateien"
-   - echo "$CI_PIPELINE_SOURCE"
-   - javac -d $BIN_DIR $SRC_DIR/*.java
-  artifacts:
-   paths:
-    -$BIN_DIR
-   expire_in: 1 hour
+    # Wir erstellen den Bin ordner 
+      - run: mkdir -p bin
 
-test: 
-  stage: test
-  script:
-   - echo "Starte Testlauf"
-   - java -cp $BIN_DIR TempConverter
+    # Wir Kompilieren in den Bin Ordner 
+      - run: | 
+         javac -d bin src/*.java
+         echo "Kompiliere Dateien\n"
+
+    # Wir führen den Code aus 
+      - run: |
+         java -cp bin TempConverter
+         echo "Führe Code aus\n"
