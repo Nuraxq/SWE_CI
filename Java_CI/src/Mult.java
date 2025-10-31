@@ -1,10 +1,10 @@
-public class TempConverter {
+public class Mult {
     public static void main(String[] args) throws Exception {
         System.out.println("Starte Tests: ");
 
 
         boolean testspassed = true;
-        if(TempConverter.CelToFar(12) == 53.6){
+        if(Mult.multiply(2,0) == 0){
             System.out.println("Test 1 Erfolgreich!");
         }
         else{
@@ -12,7 +12,7 @@ public class TempConverter {
             testspassed = false;
         }
 
-        if(TempConverter.CelToFar(-13) == 8.6){
+        if(Mult.multiply(3,-2) == -6){
             System.out.println("Test 2 Erfolgreich!");
         }
         else{
@@ -20,7 +20,7 @@ public class TempConverter {
             testspassed = false;
         }
 
-        if(TempConverter.FarToCel(12) == -11.111){
+        if(Mult.multiply(1,4) == 1){
             System.out.println("Test 3 Erfolgreich!");
         }
         else{
@@ -28,7 +28,7 @@ public class TempConverter {
             testspassed = false;
         }
 
-        if(TempConverter.FarToCel(-1) == -18.3333){
+        if(Mult.multiply(3,5) == 15){
             System.out.println("Test 4 Erfolgreich!");
         }
         else{
@@ -46,11 +46,8 @@ public class TempConverter {
         }
     }
 
-    public static double CelToFar(double temperature){
-        return (temperature * 9/5) + 32;
-    }
 
-    public static double FarToCel(double temperature){
-        return (temperature - 32) * 5/9;
+    public static int multiply(int a, int b){
+        return a*b;
     }
 }
