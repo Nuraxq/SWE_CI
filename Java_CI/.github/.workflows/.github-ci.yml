@@ -19,7 +19,7 @@ jobs:
     # Wir erstellen den Bin ordner 
       - run: mkdir -p bin
 
-    # Wir Kompilieren in den Bin Ordner 
+    # Wir kompilieren in den Bin Ordner 
       - run: | 
          javac -d bin src/*.java
          echo "Kompiliere Dateien\n"
