@@ -1,0 +1,12 @@
+imagine: openjdk::17
+
+stages:
+  -build
+  -test
+
+variables:
+  SRC_DIR: "src"
+  BIN_DIR: "bin"
+
+  before_script:
+    - mkdir -p $BIN_DIR
