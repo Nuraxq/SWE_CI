@@ -7,7 +7,7 @@ on:
 
 # Die Tasks die durchgeführt werden, wir haben nur einen Job der alles macht
 jobs:
-  compile and test:
+  compile_and_test:
 
   #Festlegen welche VM Verwendet werden soll
     runs-on: ubuntu-latest
