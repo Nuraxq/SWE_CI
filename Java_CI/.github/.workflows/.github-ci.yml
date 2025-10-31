@@ -8,5 +8,22 @@ variables:
   SRC_DIR: "src"
   BIN_DIR: "bin"
 
-  before_script:
-    - mkdir -p $BIN_DIR
+before_script:
+  - mkdir -p $BIN_DIR
+
+build:
+  stage: build
+  script:
+   - echo "Kompiliere Java Dateien"
+   - echo "$CI_PIPELINE_SOURCE"
+   - javac -d $BIN_DIR $SRC_DIR/*.java
+  artifacts:
+   paths:
+    -$BIN_DIR
+   expire_in: 1 hour
+
+test: 
+  stage: test
+  script:
+   - echo "Starte Testlauf"
+   - java -cp $BIN_DIR TempConverter
