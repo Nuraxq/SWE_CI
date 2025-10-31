@@ -13,14 +13,14 @@ jobs:
         with:
           java-version: 17
 
-      - run: mkdir -p bin
+      - run: mkdir -p Java_CI/bin
 
       - run: |
           echo "=== Kompiliere Java-Dateien ==="
-          javac -d bin src/*.java
+          javac -d bin Java_Ci/src/*.java
           echo "=== Kompilierung abgeschlossen ==="
 
       - run: |
           echo "=== Starte Testlauf ==="
-          java -cp bin TempConverter
+          java -cp Java_CI/bin TempConverter
           echo "=== Testlauf beendet ==="
