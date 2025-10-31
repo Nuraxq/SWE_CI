@@ -1,0 +1,26 @@
+name: Java CI
+
+on:
+  push:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 17
+
+      - run: mkdir -p bin
+
+      - run: |
+          echo "=== Kompiliere Java-Dateien ==="
+          javac -d bin src/*.java
+          echo "=== Kompilierung abgeschlossen ==="
+
+      - run: |
+          echo "=== Starte Testlauf ==="
+          java -cp bin TempConverter
+          echo "=== Testlauf beendet ==="
