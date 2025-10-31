@@ -1,3 +1,5 @@
+// Klasse kann 2 Zahlen multiplizieren und führt einige Tests mit der Funktion durch
+
 public class Mult {
     public static void main(String[] args) throws Exception {
         System.out.println("Starte Tests: ");

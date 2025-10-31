@@ -1,27 +1,37 @@
+#Name der Pipeline
 name: Java CI
 
+#Egal auf welchem Branch immer beim Push wird es ausgeführt
 on:
   push:
 
+# Die Tasks die durchgeführt werden, wir haben nur einen Job der alles macht
 jobs:
-  build-and-test:
+  compile and test:
+
+  #Festlegen welche VM Verwendet werden soll
     runs-on: ubuntu-latest
     steps:
+      #Code des Repos wird heruntergeladen in die VM
       - uses: actions/checkout@v3
-
+      
+      #Installiert Java in der VM, mit der Java 21 Temurin distro
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: 21
 
+      #Es wird ein bin verzeichnis angelegt
       - run: mkdir -p Java_CI/bin
 
+      #Die Dateien werden kompiliert
       - run: |
-          echo "=== Kompiliere Java-Dateien ==="
+          echo "Kompiliere Java Dateien:"
           javac -d Java_CI/bin Java_CI/src/*.java
-          echo "=== Kompilierung abgeschlossen ==="
+          echo "Ende Kompilierung"
 
+      #Die Kompilierten Dateien werden ausgeführt
       - run: |
-          echo "=== Starte Testlauf ==="
+          echo "Starte Testlauf:"
           java -cp Java_CI/bin Mult
-          echo "=== Testlauf beendet ==="
+          echo "Ende Testlauf."
