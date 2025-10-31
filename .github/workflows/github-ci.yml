@@ -18,7 +18,7 @@ jobs:
 
       - run: |
           echo "=== Kompiliere Java-Dateien ==="
-          javac -d bin Java_CI/src/*.java
+          javac -d Java_CI/bin Java_CI/src/*.java
           echo "=== Kompilierung abgeschlossen ==="
 
       - run: |
