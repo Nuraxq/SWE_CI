@@ -1,30 +1,26 @@
 name: Java CI
 
-#Immer beim Pushen soll es Ausgeführt werden
 on:
   push:
 
-#Wir legen die Jobs Fest
 jobs:
-  # Wir bauen und Testen direkt in einem
   build-and-test:
-    runs-on: ubuntu-latest  #VM festlegen für Workflow 
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # Den Code holen 
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-java@v3 # Java Version festlegen
+      - uses: actions/setup-java@v3
         with:
           java-version: 17
 
-    # Wir erstellen den Bin ordner 
       - run: mkdir -p bin
 
-    # Wir kompilieren in den Bin Ordner 
-      - run: | 
-         javac -d bin src/*.java
-         echo "Kompiliere Dateien\n"
-
-    # Wir führen den Code aus 
       - run: |
-         java -cp bin TempConverter
-         echo "Führe Code aus\n"
+          echo "=== Kompiliere Java-Dateien ==="
+          javac -d bin src/*.java
+          echo "=== Kompilierung abgeschlossen ==="
+
+      - run: |
+          echo "=== Starte Testlauf ==="
+          java -cp bin TempConverter
+          echo "=== Testlauf beendet ==="
