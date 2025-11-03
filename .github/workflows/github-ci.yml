@@ -5,7 +5,7 @@ on: [push]
 #Variablen
 env:
   SRC_DIR: "Java_CI/src/*.java"
-  BIN_DIR: "Java_CI-Test/bin"
+  BIN_DIR: "Java_CI/bin"
   
 jobs:
   #Build-Job
