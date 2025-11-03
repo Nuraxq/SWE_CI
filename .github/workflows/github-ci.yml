@@ -57,5 +57,5 @@ jobs:
           path: ${{env.BIN_DIR}}
         #Java ausführen
       - name: Run Java Test
-        run: java -cp Java_CI/bin App
+        run: java -cp Java_CI/bin Mult
 
